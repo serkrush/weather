@@ -39,7 +39,12 @@ export const OPENWEATHERMAP_API_KEY = 'your_openweathermap_api_key';
 export const WTFGEODB_API_KEY = 'your_geodb_api_key';
 ```
 
-## Android Screenshot
-![Weather App Screenshot](assets/images/Screenshot/AndroidHome.png)
-![Weather App Screenshot](assets/images/Screenshot/AndroidDetails.png)
-![Weather App Screenshot](assets/images/Screenshot/AndroidSettings.png)
+## Android Screenshots
+<img src="assets/images/Screenshot/AndroidHome.png" alt="Weather App AndroidHome" width="200" >
+<img src="assets/images/Screenshot/AndroidDetails.png" alt="Weather App AndroidDetails" width="200" >
+<img src="assets/images/Screenshot/AndroidSettings.png" alt="Weather App AndroidSettings" width="200" >
+
+## Ios Screenshots
+<img src="assets/images/Screenshot/IosHome.jpg" alt="Weather App IosHome" width="200" >
+<img src="assets/images/Screenshot/IosDetails.jpg" alt="Weather App IosDetails" width="200" >
+<img src="assets/images/Screenshot/IosSettings.jpg" alt="Weather App IosSettings" width="200" >
