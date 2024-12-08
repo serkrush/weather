@@ -11,6 +11,8 @@ interface WeatherData {
   };
   sys: {
     country: string;
+    sunrise: number;
+    sunset: number;
   };
   name: string;
   weather: Array<{

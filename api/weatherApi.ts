@@ -8,7 +8,6 @@ const weatherApi = axios.create({
 const apiKey = Config.OPENWEATHERMAP_API_KEY;
 
 export const fetchWeatherCity = async (city: string) => {
-  console.log('API1!!!!!!!!!!!!!!!')
   try {
     const response = await weatherApi.get(`weather?q=${city}&appid=${apiKey}`);
     return response.data;

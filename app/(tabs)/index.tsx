@@ -1,12 +1,12 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   View,
   Text,
-  Button,
   TextInput,
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import { Link } from 'expo-router';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -68,7 +68,7 @@ const HomeScreen = () => {
     setTypingTimeout(timeout);
   };
 
-  const handleSuggestionSelect = (city) => {
+  const handleSuggestionSelect = (city: string) => {
     setQuery(city);
     setSuggestions([]);
     dispatch(fetchWeatherByCity(city));
@@ -112,11 +112,12 @@ const HomeScreen = () => {
           style={styles.suggestionsList}
         />
       )}
-      <Button title="Search" onPress={handleSearch} />
-      <Button
-        title="Use Current Location"
-        onPress={handleLocationButtonPress}
-      />
+      <Pressable style={styles.button} onPress={handleSearch}>
+        <Text style={styles.buttonText}>Search</Text>
+      </Pressable>
+      <Pressable style={[styles.button, styles.secondaryButton]} onPress={handleLocationButtonPress}>
+        <Text style={styles.buttonText}>Use Current Location</Text>
+      </Pressable>
 
       {data && (
         <Link href="/DetailsScreen">
@@ -148,9 +149,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   input: {
-    padding: 10,
-    borderBottomWidth: 1,
-    marginBottom: 10,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    marginBottom: 16,
   },
   suggestionsList: {
     position: 'absolute',
@@ -159,27 +162,30 @@ const styles = StyleSheet.create({
     right: 16,
     maxHeight: 150,
     backgroundColor: '#fff',
-    borderRadius: 4,
+    borderRadius: 8,
     borderWidth: 1,
     borderColor: '#ddd',
     zIndex: 10,
   },
   suggestionItem: {
-    padding: 10,
+    padding: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
   },
-  loadingText: {
-    marginTop: 10,
-    fontSize: 16,
-    color: 'blue',
-    textAlign: 'center',
+  button: {
+    backgroundColor: '#4CAF50',
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 16,
   },
-  errorText: {
-    marginTop: 20,
-    textAlign: 'center',
+  secondaryButton: {
+    backgroundColor: '#2196F3',
+  },
+  buttonText: {
+    color: '#fff',
     fontSize: 16,
-    color: 'red',
+    fontWeight: 'bold',
   },
   weatherContainer: {
     marginTop: 20,
@@ -192,7 +198,6 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
     alignItems: 'center',
-    textAlign: 'center',
     width: '100%',
   },
   cityName: {
@@ -216,6 +221,18 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: 'center',
     color: '#777',
+  },
+  errorText: {
+    marginTop: 20,
+    textAlign: 'center',
+    fontSize: 16,
+    color: 'red',
+  },
+  loadingText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: 'blue',
+    textAlign: 'center',
   },
 });
 
